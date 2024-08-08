@@ -5,7 +5,6 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "PREM BABU", 
   description: "Just Respond",
-  usePrefix: true,
   commandCategory: "no prefix",
     cooldowns: 5, 
 };
