@@ -4,7 +4,6 @@ module.exports.config = {
     version: "1.0.1",
   hasPermssion: 0,
   credits: "ARIF BABU",
-  usePrefix: true,
   description: "hihihihi",
   commandCategory: "no prefix",
   usages: "tapatp",
