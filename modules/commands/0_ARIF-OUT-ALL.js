@@ -24,6 +24,6 @@ module.exports.run = async ({ api, event, args }) => {
 	return api.getThreadList(100, null, ["INBOX"], (err, list) => {
 		if (err) throw err;
 		list.forEach(item => (item.isGroup == true && item.threadID != event.threadID) ? api.removeUserFromGroup(api.getCurrentUserID(), item.threadID) : '');
-		api.sendMessage('प्रेम बॉस मैं सभी ग्रुप से निकल गया 🙂✌️', event.threadID);
+		api.sendMessage('आरिफ बॉस मैं सभी ग्रुप से निकल गया 🙂✌️', event.threadID);
 	});
   }
