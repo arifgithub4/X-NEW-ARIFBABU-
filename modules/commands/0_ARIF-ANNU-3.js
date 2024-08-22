@@ -4,6 +4,7 @@ module.exports.config = {
   hasPermssion: 0,
   credits: "John Lester",
   description: "Hug 🥰",
+  usePrefix: true,
   commandCategory: "img",
   usages: "[@mention]",
   cooldowns: 5,
@@ -20,9 +21,9 @@ module.exports.onLoad = async() => {
   const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
   const { downloadFile } = global.utils;
   const dirMaterial = __dirname + `/cache/canvas/`;
-  const path = resolve(__dirname, 'cache/canvas', 'ar2.jpg');
+  const path = resolve(__dirname, 'cache/canvas', 'aar4.png');
   if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-  if (!existsSync(path)) await downloadFile("https://i.imgur.com/AjRYuPN.jpg", path);
+  if (!existsSync(path)) await downloadFile("https://i.imgur.com/CUkkjEe.jpg", path);
 }
 
 async function makeImage({ one, two }) {
@@ -32,7 +33,7 @@ async function makeImage({ one, two }) {
   const jimp = global.nodemodule["jimp"];
   const __root = path.resolve(__dirname, "cache", "canvas");
 
-  let batgiam_img = await jimp.read(__root + "/ar2.jpg");
+  let batgiam_img = await jimp.read(__root + "/aar4.png");
   let pathImg = __root + `/batman${one}_${two}.png`;
   let avatarOne = __root + `/avt_${one}.png`;
   let avatarTwo = __root + `/avt_${two}.png`;
@@ -45,7 +46,7 @@ async function makeImage({ one, two }) {
 
   let circleOne = await jimp.read(await circle(avatarOne));
   let circleTwo = await jimp.read(await circle(avatarTwo));
-  batgiam_img.composite(circleOne.resize(150, 150), 2000, 100).composite(circleTwo.resize(216, 222), 565, 213);
+  batgiam_img.composite(circleOne.resize(130, 130), 157, 416).composite(circleTwo.resize(133, 133), 458, 415);
 
   let raw = await batgiam_img.getBufferAsync("image/png");
 
@@ -69,6 +70,6 @@ module.exports.run = async function ({ event, api, args }) {
   if (!mention[0]) return api.sendMessage("Please mention 1 person.", threadID, messageID);
   else {
       const one = senderID, two = mention[0];
-      return makeImage({ one, two }).then(path => api.sendMessage({ body: "🌺𝐌𝐀𝐃𝐄 𝐁𝐘 𝐀𝐑𝐈𝐅 𝐁𝐀𝐁𝐔🌺", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+      return makeImage({ one, two }).then(path => api.sendMessage({ body: "", attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
   }
     }
